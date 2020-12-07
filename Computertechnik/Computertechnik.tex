@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\title{Zusammenfassung der Wissenstruktur Computertechnik}
+\author{Bodun Du}
+\begin{document}
+    \maketitle
+    \pagebreak
+    \tableofcontents
+    \pagebreak
+    \section{Codierung}
+    Mapping der implizierten Elemente eines Zahlensystems durch konvention Entsprechungsregel, um die natursprachliche bzw. semantische Elemente zu vertreten, sodass die menschliche Informationen in bestimmter Form verarbeitet und gespeichert werden können.
+    \subsubsection*{Basis($b$):}
+    Informationsvarität/Mächtigkeit eines einzelnen Zeichens.\\
+   
+    \subsubsection*{Datenbreite($n$):}
+    Zusammensetzung mehrer Datenstellen.\\\\
+    Ein n-Stellen-Informationsstück als Menge hat die Informationsmächtigkeit(Anzahl verschiedener Kombinationsmöglichkeiten)$$b^n$$
+
+    \subsubsection*{Überlauf}
+    Ein Informationsstück mit höherer Informationsmächtigkeit kann alle Elemente aus dem Informationsstück, der niedrigere Informationsmächtigkeit hat, vollständig implizieren.\\
+    Ist ein Element nicht in den Zielinformationsstück zu implizieren, so hat man einen Überlauf.\\\\
+    \textbf{Carryout}:Erweiterung des Zielvolums\\\\
+    \subsubsection*{Wertigkeit}
+    Der Wert($v$) eines Informationsstück wird durch arithmetische Zählung der verschiedenen Zifferkombinationen definiert.\\
+    So gilt die Wertumrechung ins dezimale System:\footnote{$a_i$: Zifferinhalt an der Stelle $i$}
+    $$v=\sum_{i=0}^{j=n-1}a_i\cdot b^i$$
+    \pagebreak
+
+    \section{Binärsystem}
+    In der Computertechnik wird hauptsächlich 2-Pegels-Hartware-Bauelemente benutzt, wird also $b$=2 hier intensiv betrachtet.\\\\
+    \textbf{Bit}: eine Stelle im Binärsystem, entweder 0 oder 1\\\\
+    \textbf{Byte}: 1 Byte = 8 Bits
+    \pagebreak
+
+    \section{Codierungs Verwirklichung auf dem Binärsystem}
+    Konventionell gibt es zwei Stufen der Codierung vom Binärdatenstück, die verschiedenen Verwendungszweck entsprechen.
+    Der Anfang eines Informationsstücks wird durch Perfix 0x gekennzeichnet.
+    \subsubsection*{Ziffer}
+    \begin{tabular}{lll}
+        $n$ = 3& oktale Darstellung& entspricht b=8;n=1\\
+        $n$ = 4& hexadezimale Darstellung& entspricht b=16;n=1\\
+    \end{tabular}\\\\
+    Weil die oktale Darstellung die dezimale Daten gleicher Breite nicht implizieren kann, wird heute standradmäßig hexadezimale Darstellung in der Codierung verwendet. Dazu werden die Werte 10 bis 15 durch A bis F repräsentiert.\\
+    \subsubsection*{Datenwort}
+    Durch Kombination der Ziffer lässt sich die Mächtigkeit eines Informationstücks erweitern.\\\\
+    \begin{tabular}{ll}
+        $n=3\cdot8$&24-Bits-System\\
+        $n=4\cdot2$&8-Bits-System\\
+        $n=4\cdot4$&16-Bits-System\\
+        $n=4\cdot8$&32-Bits-System\\
+        $\vdots$&$\vdots$
+    \end{tabular}\\\\
+    Ein Datenwort kann sowohl mit übersetzter Ziffercodierung als auch mit Bits dargestellt werden.
+    \subsection{Textcodierung}
+    Um Textinhalt, der enorme verschiedene Einheitszeichen hat, zu codieren, wird oft lange Datenwortbreite verwendet. Da wird das Mapping auf der Zifferbreite von 0 bis 9; A bis Z nach arithmetischer Folge geordnet.
+    \subsubsection*{ASCII-Standard(American Standards Code for Information Interchange):}
+    Mapping des 7-Bits-Systems (mit Logik der Schreibmaschine) für englische Buchstaben mit Steuersymbolen
+    \subsubsection*{EASCII:}
+    8-Bits-Erweiterung vom ASCII-Standrad, dass europäsch-spezifische Buchstaben unterstützt werden.
+    \subsubsection*{UCS(Universal Charcter Set)/ISO 10646/ICE 10646}
+    Sammlung aller bekannten Zeichen mit Codierung(Nummerierung von U+0000 bis vorgesehen U+10FFFF)
+    \subsubsection*{Unicode:}
+    heute als synchrone Zeichensammlung mit UCS, enthält aber zusätzlich noch sprachrelevante Algorithmen.
+    \subsubsection*{UTF-8:}
+    Eine Codierng-Verwirklichung vom UCS bzw. Unicode auf 8- bis 32-Bits variierter Wortbreite, mit Kompatität zum EASCII
+    \subsubsection*{UTF-16:}
+    Eine Codierng-Verwirklichung vom UCS bzw. Unicode auf 16- und 32-Bits Wortbreite
+    \subsubsection*{UTF-32:}
+    Eine Codierng-Verwirklichung vom UCS bzw. Unicode auf 32-Bits fester Wortbreite
+    \subsection{Zahlencodierung}
+    Bei Zahlen wird die hexadezimale Darstellung unmittelbar als Recheneinheit genommen.\\\\
+
+    Mit arithmetischen Zählung definierte Wertigkeit werden positive natürliche Zahlen impliziert. Will man die Zahlen mit Vorzeichen und Komma Berechnen, so muss die Wert-Codierung Modifiziert werden.
+    \subsubsection{Verwirklichung des Vorzeichens}
+    \subsubsection*{Separation von Zahl und dem Vorzeichen}
+    7. bis 16. Elemente werden von -0 bis -7 zugeordnet%\\
+    %\textbf{Vorteil}\\
+   % Anschauliche Codierung\\
+   % \textbf{Nachteil}\\
+   % Die doppelte Null und die nicht übereinstimmende Rechenlogik für vorzeichenlose und vorzeichenbehaftete Zahlen
+    \subsubsection*{Einer-Kompliment}
+    7. bis 16. Elemente werden von -7 bis -0 zugeordnet%\\
+    %\textbf{Vorteil}\\
+    %Gleichheit der Additionslogik bei vorzeichenlosen und vorzeichenbehafteten Zahlen\\
+    %\textbf{Nachteil}\\
+   % Die doppelte Null
+    \subsubsection*{Zweier-Kompliment}
+    7. bis 16. Elemente werden von -8 bis -1 zugeordnet%\\
+    % \textbf{Vorteil}\\
+    %Vermeidung der doppelten Null\\
+    %\textbf{Nachteil}\\
+    %leicht abgestimmte Rechenlogik für vorzeichenlose und vorzeichenbehaftete Zahlen
+    
+    \subsubsection{Verwirklichung des Kommas}
+    \subsubsection*{Festkommazahl}
+    Einfühung vom Parameter r, sodass $$v=b^r\cdot\sum_{i=0}^{j=n-1}a_i\cdot b^i$$
+    \subsubsection*{Gleitkommazahl}
+    Darstellung der Zahlen durch wissenschaftliche Arithmetik mit Speicherung von $s, e $ und $ f$.\footnote{Spericherverhätnis $s/e/f$ im 32-Bits-Informationsstück: 1/8/23; im 64-Bits-Informationsstück: 1/11/52}\\
+    Standradfall:
+    $$v=(-1^s\cdot1,f\cdot2^{e-K})$$
+    oder erweitert(für z.B 0, $\infty$ oder NaN\footnote{Not a Number}):$$v=(-1^s\cdot0,f\cdot2^{1-K})$$
+    Da im 32-Bits-Informationsstück: K=127;\\ im 32-Bits-Informationsstück (mit doppelter Genauigkeit): K=1023
+    
+
+\end{document}
